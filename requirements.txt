@@ -1,0 +1,6 @@
+# Expense Tracker - Python Requirements
+# Python 3.6+ required
+
+Flask==3.0.0
+Werkzeug==3.0.1
+

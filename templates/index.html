@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Expense Tracker</h1>
+            <p class="subtitle">Manage your expenses efficiently</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Add Expense Form -->
+            <section class="card add-expense-section">
+                <h2>Add New Expense</h2>
+                <form id="expenseForm">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description" required placeholder="e.g., Groceries">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="amount">Amount (₹)</label>
+                            <input type="number" id="amount" name="amount" step="0.01" min="0.01" required placeholder="0.00">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" name="category" required placeholder="e.g., Food">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add Expense</button>
+                </form>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="card filters-section">
+                <h2>Filters</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="filterCategory">Filter by Category:</label>
+                        <select id="filterCategory">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filterMonth">Filter by Month:</label>
+                        <input type="month" id="filterMonth">
+                    </div>
+                    
+                    <button id="clearFilters" class="btn btn-secondary">Clear Filters</button>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="card statistics-section">
+                <h2>Statistics</h2>
+                <div id="statistics" class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Expenses</div>
+                        <div class="stat-value" id="totalExpenses">₹0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Transactions</div>
+                        <div class="stat-value" id="transactionCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Average</div>
+                        <div class="stat-value" id="averageExpense">₹0.00</div>
+                    </div>
+                </div>
+                <div id="categoryBreakdown" class="category-breakdown"></div>
+            </section>
+
+            <!-- Expenses List -->
+            <section class="card expenses-section">
+                <div class="section-header">
+                    <h2>Expenses</h2>
+                    <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+                </div>
+                <div id="expensesList" class="expenses-list">
+                    <div class="empty-state">No expenses yet. Add your first expense above!</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
